@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+    <link>https://example.com/post/</link>
+    <description>Recent content in Posts on Hugo ʕ•ᴥ•ʔ Bear Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Copyright © 2020, Jane Doe.</copyright>
+    <lastBuildDate>Sun, 15 Jan 2023 15:39:26 -0500</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hibernating to an Encrypted Swapfile on BTRFS with NixOS</title>
+      <link>https://example.com/post/hibernating-to-an-encrypted-swapfile-on-btrfs-with-nixos/</link>
+      <pubDate>Sun, 15 Jan 2023 15:39:26 -0500</pubDate>
+      
+      <guid>https://example.com/post/hibernating-to-an-encrypted-swapfile-on-btrfs-with-nixos/</guid>
+      <description>Hibernating to an Encrypted Swapfile on BTRFS with NixOS Note that BTRFS swapfiles across multiple devices (pools, RAIDs) are not supported.
+BTRFS on Linux kernels before version 5.0 can result in FS corruption. From the Arch Wiki:
+Btrfs on Linux kernel before version 5.0 does not support swap files. Failure to heed this warning may result in file system corruption. While a swap file may be used on Btrfs when mounted through a loop device, this will result in severely degraded swap performance.</description>
+    </item>
+    
+    <item>
+      <title>Test Post</title>
+      <link>https://example.com/post/test-post/</link>
+      <pubDate>Sun, 15 Jan 2023 13:32:09 -0500</pubDate>
+      
+      <guid>https://example.com/post/test-post/</guid>
+      <description>hello!</description>
+    </item>
+    
+    <item>
+      <title>A Newcomer&#39;s Commentary on 3D Printing</title>
+      <link>https://example.com/post/a-newcomers-commentary-on-3d-printing/</link>
+      <pubDate>Fri, 02 Dec 2022 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/a-newcomers-commentary-on-3d-printing/</guid>
+      <description>After recently purchasing my first 3D printer, I have developed some thoughts on the technology in general.
+I&amp;rsquo;ve had friends in the 3D printing scene preach the virtues of the technology for years now. Still, I was unconvinced. It seemed like quite an expensive investment for the infrequent payoff of being able to print something useful. After all, I could always fall back on my friends who did own 3D printers if I needed something printed.</description>
+    </item>
+    
+    <item>
+      <title>Soldering Tips From Experience</title>
+      <link>https://example.com/post/soldering-tips-from-experience/</link>
+      <pubDate>Tue, 29 Nov 2022 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/soldering-tips-from-experience/</guid>
+      <description>Soldering is an indispensable skill for countless fields of interest, from electric luthierie to car repair. While I am not a master at soldering, I hope by sharing what I have learned I may help beginners struggling to solder clean joints.
+Safety Soldering can be a dangerous activity. There are high temperatures and toxic fumes involved, but with proper precautions, most health risks can be minimized.
+As a disclaimer, I am not a medical expert and take no liability for any injuries you may sustain from following (or not following) these safety tips.</description>
+    </item>
+    
+    <item>
+      <title>Book Review: A Sand County Almanac</title>
+      <link>https://example.com/post/book-review-a-sand-county-almanac/</link>
+      <pubDate>Wed, 17 Aug 2022 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/book-review-a-sand-county-almanac/</guid>
+      <description>Written by environmentalist Aldo Leopold, A Sand County Almanac is one of the most elegant pieces of nature writing I have ever read. While only formally educated in forestry, Leopold displays a mastery of language in his stunning descriptions of outwardly simple experiences.
+The novel is well-known in conservation circles for pioneering the idea of land ethic&amp;mdash;the concept that the natural world can only be protected by instilling respect and a sense of responsibility for the land we live on.</description>
+    </item>
+    
+    <item>
+      <title>Can Version 0.1.0</title>
+      <link>https://example.com/post/can-version-0-1-0/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/can-version-0-1-0/</guid>
+      <description>I have released my program Can on RubyGems and the Arch User Repository.
+Introduction I have a feeling this post is going to get hairy with a program name like Can!
+Can is an idea for a program I&amp;rsquo;ve had for a very long time. As the FreeDesktop.org trash specification says, &amp;ldquo;An ability to recover accidentally deleted files has become the de facto standard for today&amp;rsquo;s desktop user experience.&amp;rdquo; But what about a user&amp;rsquo;s command-line experience?</description>
+    </item>
+    
+    <item>
+      <title>My Response to Log4shell</title>
+      <link>https://example.com/post/my-response-to-log4shell/</link>
+      <pubDate>Mon, 28 Feb 2022 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/my-response-to-log4shell/</guid>
+      <description>I have remodeled my entire server stack to better defend against critical vulnerabilities.
+I know this blogpost is long overdue, with the waves Log4Shell sent through the security world having mostly passed, but I promise my action was timely!
+Background Previously, my server ran Debian 11 (Bullseye) with a custom sandboxing SystemD configuration for every service I ran (read more about my old setup here). This approach offered performance benefits at the extreme cost of my time&amp;mdash;it takes ages to work out all the kinks in a custom configuration.</description>
+    </item>
+    
+    <item>
+      <title>Fall 2021 KSU HS CTF Writeup</title>
+      <link>https://example.com/post/fall-2021-ksu-hs-ctf-writeup/</link>
+      <pubDate>Sat, 13 Nov 2021 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/fall-2021-ksu-hs-ctf-writeup/</guid>
+      <description>I placed third at the end of the challenge, winning myself $50. This is how I solved the hardest and least-solved questions of each category.
+Introduction I&amp;rsquo;ve been trying to work on my resume recently, and what better way to do it than with a fun CTF organized by a local college? The competition ran from 10 A.M. to 3:30 P.M. on Sunday, November 13th. There were 33 applicants (including myself), 26 of which competed.</description>
+    </item>
+    
+    <item>
+      <title>How I Started My Server</title>
+      <link>https://example.com/post/how-i-started-my-server/</link>
+      <pubDate>Sat, 06 Nov 2021 00:00:00 -0500</pubDate>
+      
+      <guid>https://example.com/post/how-i-started-my-server/</guid>
+      <description>My server used to be an old gaming desktop, now running Debian 11. I publish my blog with a custom static site generator written in Ruby.
+Hardware This website is running off an old midrange gaming computer, from circa 12 years ago. I received it for free from a friend, who himself also got it for free from an elderly neighbor.
+The specs are as follows:
+MSI K9N6PGM2-V2 Motherboard AMD Athalon II X2 250 NVIDIA GeForce 8600 GT 2x2GB 400MHz DDR2 Memory The computer had no drive, so I bought a 256GB SATA SSD and slapped it in.</description>
+    </item>
+    
+  </channel>
+</rss>

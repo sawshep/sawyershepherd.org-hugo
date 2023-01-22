@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>My Response to Log4shell | Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+<meta name="title" content="My Response to Log4shell" />
+<meta name="description" content="I have remodeled my entire server stack to better defend against critical vulnerabilities.
+I know this blogpost is long overdue, with the waves Log4Shell sent through the security world having mostly passed, but I promise my action was timely!
+Background Previously, my server ran Debian 11 (Bullseye) with a custom sandboxing SystemD configuration for every service I ran (read more about my old setup here). This approach offered performance benefits at the extreme cost of my time&mdash;it takes ages to work out all the kinks in a custom configuration." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="My Response to Log4shell" />
+<meta property="og:description" content="I have remodeled my entire server stack to better defend against critical vulnerabilities.
+I know this blogpost is long overdue, with the waves Log4Shell sent through the security world having mostly passed, but I promise my action was timely!
+Background Previously, my server ran Debian 11 (Bullseye) with a custom sandboxing SystemD configuration for every service I ran (read more about my old setup here). This approach offered performance benefits at the extreme cost of my time&mdash;it takes ages to work out all the kinks in a custom configuration." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/my-response-to-log4shell/" /><meta property="og:image" content="https://example.com/images/share.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-28T00:00:00-05:00" />
+<meta property="article:modified_time" content="2022-02-28T00:00:00-05:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/share.png"/>
+
+<meta name="twitter:title" content="My Response to Log4shell"/>
+<meta name="twitter:description" content="I have remodeled my entire server stack to better defend against critical vulnerabilities.
+I know this blogpost is long overdue, with the waves Log4Shell sent through the security world having mostly passed, but I promise my action was timely!
+Background Previously, my server ran Debian 11 (Bullseye) with a custom sandboxing SystemD configuration for every service I ran (read more about my old setup here). This approach offered performance benefits at the extreme cost of my time&mdash;it takes ages to work out all the kinks in a custom configuration."/>
+
+
+
+<meta itemprop="name" content="My Response to Log4shell">
+<meta itemprop="description" content="I have remodeled my entire server stack to better defend against critical vulnerabilities.
+I know this blogpost is long overdue, with the waves Log4Shell sent through the security world having mostly passed, but I promise my action was timely!
+Background Previously, my server ran Debian 11 (Bullseye) with a custom sandboxing SystemD configuration for every service I ran (read more about my old setup here). This approach offered performance benefits at the extreme cost of my time&mdash;it takes ages to work out all the kinks in a custom configuration."><meta itemprop="datePublished" content="2022-02-28T00:00:00-05:00" />
+<meta itemprop="dateModified" content="2022-02-28T00:00:00-05:00" />
+<meta itemprop="wordCount" content="443"><meta itemprop="image" content="https://example.com/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Hugo ʕ•ᴥ•ʔ Bear Blog</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About Me</a>
+
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <p>I have remodeled my entire server stack to better defend
+against critical vulnerabilities.</p>
+<p>I know this blogpost is long overdue, with the waves
+Log4Shell sent through the security world having mostly
+passed, but I promise my action was timely!</p>
+<h2 id="background">Background</h2>
+<p>Previously, my server ran Debian 11 (Bullseye) with a custom
+sandboxing SystemD configuration for every service I ran (read
+more about my old setup <a href="/post/2021/11/06">here</a>). This
+approach offered performance benefits at the extreme cost of
+my time&mdash;it takes ages to work out all the kinks in a
+custom configuration.</p>
+<p>Unfortunately, when Log4Shell was publicized, the
+only service I had left to sandbox was the only service I
+ran to be affected by the vulnerability.</p>
+<p>I heard of the vulnerability a few hours after the news
+broke. While my logs held no indication of malicious actors,
+I knew that one can never be too careful if an attacker
+potentially has full RCE capabilities, and promptly wiped my
+server.</p>
+<h2 id="rebuilding">Rebuilding</h2>
+<p>Left with a blank slate, I decided that I needed to take a
+smarter approach to my server infrastructure. After the
+scare of Log4Shell, security, reproducibility, and
+ease-of-setup took precedence over minute performance
+optimizations. I took to putting each of my services in
+Docker containers, which I managed with Ansible on top of
+Fedora Server as my distribution of choice.</p>
+<p>In front of all the containers sits a reverse proxy to
+forward requests to the appropriate container. This also
+further fortifies my network in combination with UFW&mdash;no
+connections can get in or out of the containers without
+going through the reverse proxy.</p>
+<p>Overall, I am satisfied with this new software stack. It has
+proven to be magnitudes more dependable and secure than my
+previous infrastructure.</p>
+<h2 id="future-plans">Future Plans</h2>
+<p>If Fedora ever becomes an inconvenience to me, I will switch
+to NixOS. I have <a href="https://wizardwatch.net">a friend in the Nix
+cult</a> who has given it great praise
+for its reproducibility and declarative package management.
+NixOS in combination with Nix Flakes may even allow me to
+completely remove Ansible from the stack.</p>
+<p>Another problem that may come to annoy me in the future is
+that my server has no webhook capabilities. As of now, if I
+want to make a post to my blog, I have to:</p>
+<ol>
+<li>Write the post</li>
+<li>Commit and push the post</li>
+<li>Make a new build with
+<a href="https://github.com/sawshep/sawsge">Sawsge</a></li>
+<li>Run the Ansible playbook to update the site on my server</li>
+</ol>
+<p>I&rsquo;d prefer to just push changes to the repository,
+triggering the Git server to send a webhook to my server,
+which would generate a new Sawsge build right on the server.
+It&rsquo;ll be a pain to set up, but will save me labor in the
+long run.</p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>Fall 2021 KSU HS CTF Writeup | Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+<meta name="title" content="Fall 2021 KSU HS CTF Writeup" />
+<meta name="description" content="I placed third at the end of the challenge, winning myself $50. This is how I solved the hardest and least-solved questions of each category.
+Introduction I&rsquo;ve been trying to work on my resume recently, and what better way to do it than with a fun CTF organized by a local college? The competition ran from 10 A.M. to 3:30 P.M. on Sunday, November 13th. There were 33 applicants (including myself), 26 of which competed." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="Fall 2021 KSU HS CTF Writeup" />
+<meta property="og:description" content="I placed third at the end of the challenge, winning myself $50. This is how I solved the hardest and least-solved questions of each category.
+Introduction I&rsquo;ve been trying to work on my resume recently, and what better way to do it than with a fun CTF organized by a local college? The competition ran from 10 A.M. to 3:30 P.M. on Sunday, November 13th. There were 33 applicants (including myself), 26 of which competed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/fall-2021-ksu-hs-ctf-writeup/" /><meta property="og:image" content="https://example.com/images/share.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-11-13T00:00:00-05:00" />
+<meta property="article:modified_time" content="2021-11-13T00:00:00-05:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/share.png"/>
+
+<meta name="twitter:title" content="Fall 2021 KSU HS CTF Writeup"/>
+<meta name="twitter:description" content="I placed third at the end of the challenge, winning myself $50. This is how I solved the hardest and least-solved questions of each category.
+Introduction I&rsquo;ve been trying to work on my resume recently, and what better way to do it than with a fun CTF organized by a local college? The competition ran from 10 A.M. to 3:30 P.M. on Sunday, November 13th. There were 33 applicants (including myself), 26 of which competed."/>
+
+
+
+<meta itemprop="name" content="Fall 2021 KSU HS CTF Writeup">
+<meta itemprop="description" content="I placed third at the end of the challenge, winning myself $50. This is how I solved the hardest and least-solved questions of each category.
+Introduction I&rsquo;ve been trying to work on my resume recently, and what better way to do it than with a fun CTF organized by a local college? The competition ran from 10 A.M. to 3:30 P.M. on Sunday, November 13th. There were 33 applicants (including myself), 26 of which competed."><meta itemprop="datePublished" content="2021-11-13T00:00:00-05:00" />
+<meta itemprop="dateModified" content="2021-11-13T00:00:00-05:00" />
+<meta itemprop="wordCount" content="833"><meta itemprop="image" content="https://example.com/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Hugo ʕ•ᴥ•ʔ Bear Blog</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About Me</a>
+
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <p><a href="https://github.com/AndyGreenPhD/HS_CTF/tree/main/fall_2021">I placed
+third</a>
+at the end of the challenge, winning myself $50. This is how
+I solved the hardest and least-solved questions of each
+category.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I&rsquo;ve been trying to work on my resume recently, and what
+better way to do it than with a fun CTF organized by a local
+college? The competition ran from 10 A.M. to 3:30 P.M. on
+Sunday, November 13th. There were 33 applicants (including
+myself), 26 of which competed.</p>
+<h2 id="log-analysis">Log Analysis</h2>
+<blockquote>
+<p>What is the total size of the objects returned to client
+IP address 66.249.73.135? (in bytes)</p>
+</blockquote>
+<p>The provided file was a large Nginx log with many
+different clients requesting many different resources,
+whether they existed or not.</p>
+<p>I ran <code>grep &quot;^66.249.73.135 LogFile.txt&quot; &gt; requests.txt</code> to
+get a file of requests only by the target IP.</p>
+<p>Each entry in an Nginx log follows this format:<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<pre tabindex="0"><code>ip - user [time] &#34;request&#34; status bytes &#34;referer&#34; &#34;user_agent&#34;
+</code></pre><p>I can use regex capture groups to get the number of bytes
+transferred, turn it into an <code>int</code>, and add it to a total.</p>
+<p>I wrote a Perl script to do just that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span><span style="color:#75715e"># Open the list of requests made</span>
+</span></span><span style="display:flex;"><span>open <span style="color:#66d9ef">my</span> $lines, <span style="color:#e6db74">&#34;requests.txt&#34;</span> <span style="color:#f92672">or</span> die <span style="color:#e6db74">&#34;Can&#39;t open file&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">my</span> $total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For each line in the file,</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ( <span style="color:#66d9ef">my</span> $line <span style="color:#f92672">=</span> <span style="color:#e6db74">&lt;$lines&gt;</span> ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># if the line matches this regex, capture the match in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># parentheses...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($line <span style="color:#f92672">=~</span><span style="color:#e6db74"> /66.249.73.135 - - .* &#34;GET .*&#34; [0-9]* ([0-9]*) &#34;.*/s</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ...and add it to the total.</span>
+</span></span><span style="display:flex;"><span>        $total <span style="color:#f92672">+=</span> int($1)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print the total</span>
+</span></span><span style="display:flex;"><span>say $total
+</span></span></code></pre></div><h2 id="network-traffic-analysis">Network Traffic Analysis</h2>
+<blockquote>
+<p>What is the flag?
+The flag is in the format <code>KSU-***-*****</code></p>
+</blockquote>
+<p>The attached file was a <code>.pcapng</code> file.</p>
+<p>I uploaded the file to <a href="https://apackets.com/">A-Packets</a>,
+an online pcap analyzer. In the &lsquo;Images&rsquo; section, I found an
+image with the flag written on it.</p>
+<p><img src="network-traffic-analysis.jpg" alt="An image of the host of Ancient Aliens. The caption says,&amp;ldquo;The flag is KSU-2021-BEBE&amp;rdquo;"></p>
+<h2 id="cryptography">Cryptography</h2>
+<blockquote>
+<p>Given the string below, see if you can find the flag using
+the attached file:
+ÖÊËÕËÕÏÛÈÃØÈÑÐÖ</p>
+</blockquote>
+<p>The attached file was a font. I pasted the given string into
+LibreOffice and set it to the attached font, which revealed
+the flag: <code>THISISMYFAVFONT</code></p>
+<h2 id="password-cracking">Password Cracking</h2>
+<blockquote>
+<p><a href="https://www.wowprogress.com/">WoWProgress</a> is a site
+which tracks the rankings of the top guilds in the world
+for the game World of Warcraft. The following is an md5
+hash of the name of one of the top 100 guilds in the world
+for the &ldquo;Sanctum of Domination&rdquo; tier.  Crack the hash and
+submit the name of the guild as your answer!</p>
+<p><code>39d8b865c6ba1c6cfd354a2a1763c1ff</code></p>
+</blockquote>
+<p>I simply copied the top 100 guilds by column into a wordlist
+and ran it in <code>john</code> against the hash to get the flag:
+<code>Wizards and Monkeys</code>.</p>
+<h2 id="python-programming">Python Programming</h2>
+<p>Unfortunately, I ran out of time on the hardest question of
+this section.</p>
+<h2 id="forensics">Forensics</h2>
+<p>All the questions in this category were not written by the
+organizers, but instead provided to them by CTFd. In my
+opinion, all the forensics challenges were undervalued at
+only 100 points each.</p>
+<h3 id="a-friend">A Friend</h3>
+<p>I was the only participant to solve this question!</p>
+<blockquote>
+<p>My friend has been acting a little weird lately. He sent
+me a weird message. Can you figure out what&rsquo;s up?</p>
+</blockquote>
+<p>Attached is a zip file named <code>a_friend.zip</code>.</p>
+<p>First, I attempted to unzip the file, which returned an
+error. By running <code>binwalk</code> on the file, I saw that, while
+indeed there was a zip file in it, there were also other
+embedded files.</p>
+<pre tabindex="0"><code>DECIMAL  HEXADECIMAL  DESCRIPTION
+0        0x0          Zip archive data, at least v2.0 to extract, compressed size: 12250, uncompressed size: 24626, name: a friend.docx
+12404    0x3074       End of Zip archive, footer length: 22
+12426    0x308A       PNG image, 5312 x 2988, 8-bit/color RGB, non-interlaced
+15889    0x3E11       Zlib compressed data, default compression
+</code></pre><p>I extracted these all at once. Inside, there was&hellip;</p>
+<ul>
+<li><code>0.zip</code>: A copy of the original zip file. Strange, I
+know&mdash;in fact, I think this is what caused <code>binwalk</code> to
+behave irregularly.</li>
+<li><code>3E11</code>: An empty file.</li>
+<li><code>3E11.zlib</code>: Zlib compressed data.</li>
+<li><code>a friend.docx</code>: A Word document.</li>
+</ul>
+<p>Notice how there is no PNG image present as <code>binwalk</code>
+previously suggested there would be. Unfortunately, I did
+not notice this until later.</p>
+<p>The Word document had white text that blended into the
+background. It described that somewhere in the archive the
+friend had hidden his/her location.</p>
+<p>I unzipped the <code>.docx</code> file&mdash;they&rsquo;re really just zip
+archives&mdash;and perused around for any sort of location to no
+avail. I decided to take a step back; I used <code>strings a_friend.zip | less</code> on the whole archive to check for
+anything I might have missed. In fact, I did miss
+something&mdash;EXIF data for the supposed PNG embedded in the
+file:</p>
+<pre tabindex="0"><code>exif:GPSAltitude=&#34;220/1&#34;
+exif:GPSLatitude=&#34;41,32.888585N&#34;
+exif:GPSLongitude=&#34;90,29.983900W&#34;
+exif:GPSTimeStamp=&#34;2016-02-06T15:08:22Z&#34;
+</code></pre><p>As it turns out, this was a red herring. Different map
+applications read these coordinates differently, and no
+coordinates or addresses were accepted as the flag.</p>
+<p>I inspected the output of <code>binwalk</code> again and finally
+noticed the missing image supposedly in the file. I
+extracted the image individually from the file as opposed
+extracting all the other files at once&mdash;it worked, and the
+flag was written across the image.</p>
+<p><img src="a-friend.png" alt="An image of 2 cute rats in a cage at a pet store. Thecaption says,&amp;ldquo;flag{help_im_stuck_at_the_pet_store}&amp;rdquo;" title="A
+Friend Flag"></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://rtcamp.com/tutorials/nginx/log-parsing/">https://rtcamp.com/tutorials/nginx/log-parsing/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

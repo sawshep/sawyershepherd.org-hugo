@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>Can Version 0.1.0 | Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+<meta name="title" content="Can Version 0.1.0" />
+<meta name="description" content="I have released my program Can on RubyGems and the Arch User Repository.
+Introduction I have a feeling this post is going to get hairy with a program name like Can!
+Can is an idea for a program I&rsquo;ve had for a very long time. As the FreeDesktop.org trash specification says, &ldquo;An ability to recover accidentally deleted files has become the de facto standard for today&rsquo;s desktop user experience.&rdquo; But what about a user&rsquo;s command-line experience?" />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="Can Version 0.1.0" />
+<meta property="og:description" content="I have released my program Can on RubyGems and the Arch User Repository.
+Introduction I have a feeling this post is going to get hairy with a program name like Can!
+Can is an idea for a program I&rsquo;ve had for a very long time. As the FreeDesktop.org trash specification says, &ldquo;An ability to recover accidentally deleted files has become the de facto standard for today&rsquo;s desktop user experience.&rdquo; But what about a user&rsquo;s command-line experience?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/can-version-0-1-0/" /><meta property="og:image" content="https://example.com/images/share.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-01T00:00:00-05:00" />
+<meta property="article:modified_time" content="2022-05-01T00:00:00-05:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/share.png"/>
+
+<meta name="twitter:title" content="Can Version 0.1.0"/>
+<meta name="twitter:description" content="I have released my program Can on RubyGems and the Arch User Repository.
+Introduction I have a feeling this post is going to get hairy with a program name like Can!
+Can is an idea for a program I&rsquo;ve had for a very long time. As the FreeDesktop.org trash specification says, &ldquo;An ability to recover accidentally deleted files has become the de facto standard for today&rsquo;s desktop user experience.&rdquo; But what about a user&rsquo;s command-line experience?"/>
+
+
+
+<meta itemprop="name" content="Can Version 0.1.0">
+<meta itemprop="description" content="I have released my program Can on RubyGems and the Arch User Repository.
+Introduction I have a feeling this post is going to get hairy with a program name like Can!
+Can is an idea for a program I&rsquo;ve had for a very long time. As the FreeDesktop.org trash specification says, &ldquo;An ability to recover accidentally deleted files has become the de facto standard for today&rsquo;s desktop user experience.&rdquo; But what about a user&rsquo;s command-line experience?"><meta itemprop="datePublished" content="2022-05-01T00:00:00-05:00" />
+<meta itemprop="dateModified" content="2022-05-01T00:00:00-05:00" />
+<meta itemprop="wordCount" content="685"><meta itemprop="image" content="https://example.com/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Hugo ʕ•ᴥ•ʔ Bear Blog</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About Me</a>
+
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <p>I have released my program Can on RubyGems and the Arch User
+Repository.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I have a feeling this post is going to get hairy with a
+program name like <em>Can</em>!</p>
+<p>Can is an idea for a program I&rsquo;ve had for a very long time.
+As the FreeDesktop.org <a href="https://specifications.freedesktop.org/trash-spec/trashspec-latest.html">trash
+specification</a>
+says, &ldquo;An ability to recover accidentally deleted files has
+become the de facto standard for today&rsquo;s desktop user
+experience.&rdquo; But what about a user&rsquo;s <em>command-line</em>
+experience? I&rsquo;m sure we&rsquo;ve all accidentally annihilated a
+file or two or three or four with rm. I know I certainly
+have, and after irreversibly deleting an entire unpublished
+project of mine, I set out to make a tool that would bring
+the de facto experience of the desktop to the command line
+to prevent this from ever happening again.</p>
+<h2 id="concept">Concept</h2>
+<p>Put simply, Can is nondestructive rm. Instead of unlinking
+files, Can moves them into a hidden trash directory (by
+default <code>~/.local/share/Trash/files</code>) and creates a metadata
+file for later recovery.</p>
+<p>Option parity with rm is a primary goal for the program.
+Unlike rm, however, Can is not intended for use in scripts.
+At the moment, it has a few blocking confirmation prompts to
+prevent data deletion&ndash;option parity only provides a
+smoother user experience.</p>
+<p>While it is not intended for use in scripts, having similar
+options to rm allows for a smoother user experience.</p>
+<h2 id="development">Development</h2>
+<p>My initial idea was to program Can in C. In theory, it&rsquo;s a
+very simple program&ndash;just move a file to a trash directory
+and create a metadata file. In practice, the intricacies
+that come with making a tool with a user-friendly CLI made
+using C a headache.</p>
+<p>I also experimented with the idea of writing Can in Bash by
+stringing together existing shell commands, but there was
+too much required functionality to implement easily. I would
+have to fill in some big cracks with my own scripting, and I
+hate writing in Bash. Due to my frustration, I shelved the
+program for many months.</p>
+<p>During a school break, inspiration to finish the program
+struck. This time, I settled on Ruby because of my previous
+frustrations with slow development speed. With Ruby&rsquo;s
+expressiveness, I quickly implemented basic features,
+achieved partial option parity with rm, and set up
+continuous delivery to
+<a href="https://rubygems.org/gems/can_cli">RubyGems</a> and the
+<a href="https://aur.archlinux.org/packages/can">AUR</a> (tutorial on
+how to do Ruby CD coming soon!).</p>
+<h2 id="usage">Usage</h2>
+<p>Here are a few examples of how to use Can:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Move files to the trashcan</td>
+<td><code>can foo.txt bar.txt</code></td>
+</tr>
+<tr>
+<td>Move files and directories to the trashcan</td>
+<td><code>can -r foo.txt bar.d</code></td>
+</tr>
+<tr>
+<td>List files in the trashcan</td>
+<td><code>can -l</code></td>
+</tr>
+<tr>
+<td>List files in the trashcan that match a regex pattern</td>
+<td><code>can -l '^foo'</code></td>
+</tr>
+<tr>
+<td>View <code>.trashinfo</code> metadata of select files in the trashcan</td>
+<td><code>can -n foo.txt bar.d</code></td>
+</tr>
+<tr>
+<td>Untrash files</td>
+<td><code>can -u foo.txt bar.d</code></td>
+</tr>
+<tr>
+<td>Empty select files from the trashcan</td>
+<td><code>can -e foo.txt bar.d</code></td>
+</tr>
+<tr>
+<td>Empty everything in the trashcan</td>
+<td><code>can -e</code></td>
+</tr>
+</tbody>
+</table>
+<p>Can has many safety nets built in to prevent data deletion.
+Trashing files of the same name has been safely handled to
+prevent overwriting data. Additionally, Can will not untrash
+a file to a path that already exists. And just like rm, Can
+has an <code>-i</code> option to wait for user confirmation before
+trashing a file.</p>
+<p>To see the full usage options, run <code>can --help</code>.</p>
+<h2 id="faults-and-future-plans">Faults and Future Plans</h2>
+<h3 id="performance">Performance</h3>
+<p>A program like Can that is most likely to be run often on
+small groups of files benefits most from startup time
+optimization. Choosing Ruby may have been a good idea to
+boot programmer productivity, but it&rsquo;s awful for startup
+times.</p>
+<p>Frankly, I&rsquo;m not if there&rsquo;s any simple solutions to slow
+startup times. The nuclear option is to port the entirety of
+the program to <a href="https://crystal-lang.org/">Crystal</a>. To put
+it simply, Crystal seeks to be compiled Ruby. My description
+does not do this very neat language justice, so please see
+the homepage for yourself!</p>
+<h3 id="test-driven-development">Test-Driven Development</h3>
+<p>Can runs against no tests. I know, I know, it&rsquo;s a terrible
+developer practice. I&rsquo;ve been working to find a testing
+method I like. So far, the best option seems to be running
+<a href="https://rubygems.org/gems/minitest/versions/5.15.0">Minitest</a>
+tests with a <a href="https://github.com/ruby/rake">Rake</a> task on
+build.</p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

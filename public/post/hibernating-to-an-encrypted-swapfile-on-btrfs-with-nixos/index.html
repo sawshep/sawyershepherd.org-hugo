@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>Hibernating to an Encrypted Swapfile on BTRFS with NixOS | Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+<meta name="title" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS" />
+<meta name="description" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS Note that BTRFS swapfiles across multiple devices (pools, RAIDs) are not supported.
+BTRFS on Linux kernels before version 5.0 can result in FS corruption. From the Arch Wiki:
+Btrfs on Linux kernel before version 5.0 does not support swap files. Failure to heed this warning may result in file system corruption. While a swap file may be used on Btrfs when mounted through a loop device, this will result in severely degraded swap performance." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS" />
+<meta property="og:description" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS Note that BTRFS swapfiles across multiple devices (pools, RAIDs) are not supported.
+BTRFS on Linux kernels before version 5.0 can result in FS corruption. From the Arch Wiki:
+Btrfs on Linux kernel before version 5.0 does not support swap files. Failure to heed this warning may result in file system corruption. While a swap file may be used on Btrfs when mounted through a loop device, this will result in severely degraded swap performance." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/hibernating-to-an-encrypted-swapfile-on-btrfs-with-nixos/" /><meta property="og:image" content="https://example.com/images/share.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-01-15T15:39:26-05:00" />
+<meta property="article:modified_time" content="2023-01-15T15:39:26-05:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/share.png"/>
+
+<meta name="twitter:title" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS"/>
+<meta name="twitter:description" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS Note that BTRFS swapfiles across multiple devices (pools, RAIDs) are not supported.
+BTRFS on Linux kernels before version 5.0 can result in FS corruption. From the Arch Wiki:
+Btrfs on Linux kernel before version 5.0 does not support swap files. Failure to heed this warning may result in file system corruption. While a swap file may be used on Btrfs when mounted through a loop device, this will result in severely degraded swap performance."/>
+
+
+
+<meta itemprop="name" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS">
+<meta itemprop="description" content="Hibernating to an Encrypted Swapfile on BTRFS with NixOS Note that BTRFS swapfiles across multiple devices (pools, RAIDs) are not supported.
+BTRFS on Linux kernels before version 5.0 can result in FS corruption. From the Arch Wiki:
+Btrfs on Linux kernel before version 5.0 does not support swap files. Failure to heed this warning may result in file system corruption. While a swap file may be used on Btrfs when mounted through a loop device, this will result in severely degraded swap performance."><meta itemprop="datePublished" content="2023-01-15T15:39:26-05:00" />
+<meta itemprop="dateModified" content="2023-01-15T15:39:26-05:00" />
+<meta itemprop="wordCount" content="438"><meta itemprop="image" content="https://example.com/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Hugo ʕ•ᴥ•ʔ Bear Blog</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About Me</a>
+
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <h1 id="hibernating-to-an-encrypted-swapfile-on-btrfs-with-nixos">Hibernating to an Encrypted Swapfile on BTRFS with NixOS</h1>
+<p><strong>Note that BTRFS swapfiles across multiple devices (pools,
+RAIDs) are not supported.</strong></p>
+<p>BTRFS on Linux kernels before version 5.0 can result in FS
+corruption. From the Arch Wiki:</p>
+<blockquote>
+<p>Btrfs on Linux kernel before version 5.0 does
+not support swap files. Failure to heed this warning may
+result in file system corruption. While a swap file may
+be used on Btrfs when mounted through a loop device,
+this will result in severely degraded swap performance.</p>
+</blockquote>
+<p>You must make a BTRFS subvolume and disable copy-on-write:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo btrfs subvolume create /swap
+</span></span><span style="display:flex;"><span>sudo chattr +C /swap
+</span></span></code></pre></div><p>Create a swapfile of your chosen size. I chose the size of
+my memory +4kB for swap headers and such</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo fallocate --length 15698384KiB /swap/swapfile
+</span></span></code></pre></div><p>Format the swapfile</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo mkswap /swap/swapfile
+</span></span></code></pre></div><p>Enable the swapfile</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo swapon /swap/swapfile
+</span></span></code></pre></div><p>Add the following to your NixOS hardware configuration file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nixos" data-lang="nixos"><span style="display:flex;"><span>fileSystems<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;/swap&#34;</span> <span style="color:#960050;background-color:#1e0010">=</span> {
+</span></span><span style="display:flex;"><span>  device <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/dev/disk/by-uuid/[uuid-of-your-btrfs-partition]&#34;</span>;
+</span></span><span style="display:flex;"><span>  fsType <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;btrfs&#34;</span>;
+</span></span><span style="display:flex;"><span>  options <span style="color:#f92672">=</span> [ <span style="color:#e6db74">&#34;subvol=swap&#34;</span> <span style="color:#e6db74">&#34;noatime&#34;</span> ];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>swapDevices <span style="color:#960050;background-color:#1e0010">=</span> [ { device <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/swap/swapfile&#34;</span>; } ];
+</span></span></code></pre></div><p>The UUID for the swap subvolme is the exact same as the UUID
+for the whole BTRFS partition. You don&rsquo;t need to specify a
+<code>subvol</code> option to mount the root BTRFS partition.</p>
+<p>Next, we need to find some values to add to our kernel boot
+parameters. Specifically, we need the UUID of the swap file
+and the swap file offest. Find the UUID of the swap device
+with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>findmnt -no UUID -T /swap/swapfile
+</span></span></code></pre></div><p>Note that this UUID should point to your mounted, mapped
+BTRFS filesystem. In <code>/dev/disk/by-uuid/[...]</code>, it&rsquo;s probably a
+symlink to /dev/dm-<em>X</em>.</p>
+<p>Now we need to find the physical swap file offset. In
+filesystems other than BTRFS, this is relatively easy, as we
+can use <code>filefrag</code>. Unfortunately, filefrag does not report
+the real physical offset of files on BTRFS systems (this is
+intended). Fortunately, a user called Osandov has recognized
+this problem and published a program to find the physical
+offset of a file on BTRFS
+<a href="https://raw.githubusercontent.com/osandov/osandov-linux/master/scripts/btrfs_map_physical.c">here</a>.
+Download the program and compile it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>wget https://raw.githubusercontent.com/osandov/osandov-linux/master/scripts/btrfs_map_physical.c
+</span></span><span style="display:flex;"><span>gcc btrfs_map_physical.c -o btrfs_map_physical
+</span></span></code></pre></div><p>Now use the program to find the offset:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo ./btrfs_map_physical /swap/swapfile
+</span></span></code></pre></div><p>Find the first physical offset provided and divide it by the
+page size of your system. Usually this is 4096, but you can
+also find it with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>getconf PAGESIZE
+</span></span></code></pre></div><p>Add this to your NixOS hardware configuration:
+<code>nixos boot.resumeDevice = &quot;/dev/disk/by-uuid/[swap_device_uuid]&quot; boot.kernelParams = [ &quot;resume_offset=[offset]&quot; ]; </code></p>
+<p>And finally, rebuild and switch:
+<code>sudo nixos-rebuild switch</code></p>
+<p>If you have any issues with your device not shutting off
+after hibernating, add this to your NixOS config:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>systemd<span style="color:#f92672">.</span>sleep<span style="color:#f92672">.</span>extraConfig <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [Sleep]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    HibernateMode=shutdown
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;</span>;
+</span></span></code></pre></div><p>Related:</p>
+<ul>
+<li>[[https://askubuntu.com/questions/1206157/can-i-have-a-swapfile-on-btrfs]]</li>
+<li>[[https://wiki.archlinux.org/title/btrfs#Swap_file]]</li>
+<li>[[https://wiki.archlinux.org/title/Swap#Swap_file_creation]]</li>
+<li>[[https://discourse.nixos.org/t/how-do-i-set-up-a-swap-file/8323/7]]</li>
+<li>[[https://nixos.wiki/wiki/Btrfs]]</li>
+<li>[[https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file]]</li>
+</ul>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

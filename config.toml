@@ -1,0 +1,21 @@
+baseURL = "https://sawyershepherd.org"
+theme = ["hugo-cloak-email", "hugo-bearblog"]
+title = "Sawyer Shepherd's Blog"
+author = "Sawyer Shepherd"
+copyright = "Copyright © 2023, Sawyer Shepherd."
+languageCode = "en-US"
+
+
+enableRobotsTXT = true
+
+[menu]
+    [[menu.main]]
+        identifier = "post"
+        name = "Posts"
+        url = "/post"
+
+[params]
+    description = "My personal blog"
+    hideMadeWithLine = true
+    dateFormat = "2006-01-02"
+    favicon = "favicon.ico"

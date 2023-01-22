@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>Soldering Tips From Experience | Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+<meta name="title" content="Soldering Tips From Experience" />
+<meta name="description" content="Soldering is an indispensable skill for countless fields of interest, from electric luthierie to car repair. While I am not a master at soldering, I hope by sharing what I have learned I may help beginners struggling to solder clean joints.
+Safety Soldering can be a dangerous activity. There are high temperatures and toxic fumes involved, but with proper precautions, most health risks can be minimized.
+As a disclaimer, I am not a medical expert and take no liability for any injuries you may sustain from following (or not following) these safety tips." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="Soldering Tips From Experience" />
+<meta property="og:description" content="Soldering is an indispensable skill for countless fields of interest, from electric luthierie to car repair. While I am not a master at soldering, I hope by sharing what I have learned I may help beginners struggling to solder clean joints.
+Safety Soldering can be a dangerous activity. There are high temperatures and toxic fumes involved, but with proper precautions, most health risks can be minimized.
+As a disclaimer, I am not a medical expert and take no liability for any injuries you may sustain from following (or not following) these safety tips." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/soldering-tips-from-experience/" /><meta property="og:image" content="https://example.com/images/share.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-11-29T00:00:00-05:00" />
+<meta property="article:modified_time" content="2022-11-29T00:00:00-05:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/share.png"/>
+
+<meta name="twitter:title" content="Soldering Tips From Experience"/>
+<meta name="twitter:description" content="Soldering is an indispensable skill for countless fields of interest, from electric luthierie to car repair. While I am not a master at soldering, I hope by sharing what I have learned I may help beginners struggling to solder clean joints.
+Safety Soldering can be a dangerous activity. There are high temperatures and toxic fumes involved, but with proper precautions, most health risks can be minimized.
+As a disclaimer, I am not a medical expert and take no liability for any injuries you may sustain from following (or not following) these safety tips."/>
+
+
+
+<meta itemprop="name" content="Soldering Tips From Experience">
+<meta itemprop="description" content="Soldering is an indispensable skill for countless fields of interest, from electric luthierie to car repair. While I am not a master at soldering, I hope by sharing what I have learned I may help beginners struggling to solder clean joints.
+Safety Soldering can be a dangerous activity. There are high temperatures and toxic fumes involved, but with proper precautions, most health risks can be minimized.
+As a disclaimer, I am not a medical expert and take no liability for any injuries you may sustain from following (or not following) these safety tips."><meta itemprop="datePublished" content="2022-11-29T00:00:00-05:00" />
+<meta itemprop="dateModified" content="2022-11-29T00:00:00-05:00" />
+<meta itemprop="wordCount" content="982"><meta itemprop="image" content="https://example.com/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Hugo ʕ•ᴥ•ʔ Bear Blog</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About Me</a>
+
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <p>Soldering is an indispensable skill for countless fields of
+interest, from electric luthierie to car repair. While I am
+not a master at soldering, I hope by sharing what I have
+learned I may help beginners struggling to solder clean
+joints.</p>
+<h2 id="safety">Safety</h2>
+<p>Soldering can be a dangerous activity. There are high
+temperatures and toxic fumes involved, but with proper
+precautions, most health risks can be minimized.</p>
+<p>As a disclaimer, I am not a medical expert and take no
+liability for any injuries you may sustain from following
+(or not following) these safety tips.</p>
+<ol>
+<li>
+<p>Ventilate your workspace. Rosin flux fumes can cause
+occupational asthma<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+</li>
+<li>
+<p>Beware of residual lead on your hands. Do not eat and
+drink while soldering, and wash your hands afterwards.
+Failing to do so can result in accidental ingestion of
+lead. Note that even thorough hand-washing is not
+completely effective at removing lead<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+</li>
+<li>
+<p>Wear eye protection. Solder can &lsquo;spit&rsquo;, flinging molten
+tin into the air<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+</li>
+</ol>
+<p>This is not the entire extent of all the safety precautions
+you should follow! Be sure to conduct further research about
+how to keep yourself safe while soldering. Additionally,
+further safety tips throughout the post will be in <strong>bold</strong>.</p>
+<p>With that out of the way&hellip;</p>
+<h2 id="iron">Iron</h2>
+<p>You don&rsquo;t need a fancy, expensive soldering station to make
+clean joints. I personally use a $10 soldering iron (which
+included tips and solder!).</p>
+<h2 id="solder">Solder</h2>
+<p>You have two main choices for solders: leaded (SnPb) and
+unleaded (RoHS).</p>
+<p>There is quite a debate about the health effects of both
+options. The general consensus is that <strong>unleaded solder is
+safer than leaded solder</strong><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Although some
+proponents of leaded solder say otherwise, I have not found
+a reputable source to verify these claims.</p>
+<p>Note that with both leaded and unleaded solder, the
+<strong>primary hazard is flux fumes, not metal fumes</strong>. The
+temperatures involved in soldering are not high enough to
+vaporize the metal constituents<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p>Leaded solder is a lot easier to work with than unleaded
+solder&mdash;it melts at lower temperatures, flows better, and
+solidifies into stronger joints. Additionally, RoHS solders
+composed of pure tin can form whiskers, thin filaments
+of tin which can cause shorts between joints. Leaded solder
+is also easier on your wallet; alternative metals used in
+RoHS solders are typically much more expensive than lead.</p>
+<p>Personally, I use 60% tin, 40% lead solder. It&rsquo;s the only
+composition of leaded solder I&rsquo;ve used. I&rsquo;ve found no
+problems with it so far, so why switch?</p>
+<h2 id="cleaning">Cleaning</h2>
+<p>You should clean and tin your iron every few joins you
+solder. There are two main cleaning options available: a
+good ol&rsquo; damp sponge, or a fancy wire coil cleaner.</p>
+<p>I use a sponge; they&rsquo;re cheap and simple. They do have the
+unfortunate side effect of sucking heat from your iron. If
+you notice your soldering iron is making cold joints after
+cleaning your tip, try turning up the temperature.</p>
+<p>Some claim there is a <strong>risk of inhaling lead solder dust
+when using a wire soldering iron cleaner</strong><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> as
+pictured below.</p>
+<p><img src="wire-cleaner.jpg" alt="Wire coil soldering iron cleaner"></p>
+<h2 id="flux">Flux</h2>
+<p>Do not be misled; although solder wire may advertise a rosin
+flux core, it is an inadequate amount to facilitate easy
+flow onto a joint. Rosin core in solder wire only promotes
+adhesion to the iron itself&mdash;additional flux is required
+for solder to flow smoothly on a joint.</p>
+<p>I strongly endorse tacky no-clean gel flux. It is typically
+sold in syringes for easy application, which is appropriate,
+as you should apply it liberally and often to your joints.</p>
+<p><img src="flux.jpg" alt="Gel flux in a syringe"></p>
+<h2 id="tips">Tips</h2>
+<p>Before even turning on the iron, you need to pick a suitable
+tip. The best tip is usually the biggest one you can
+manipulate deftly within your workspace. Flat ends or curves
+on a tip create a large surface area to transfer heat with,
+which helps heat a joint more quickly.</p>
+<p>I use a large double-flat tip with a blunted point, so I
+have three flat surfaces to transfer heat with. It looks a
+little like this:</p>
+<p><img src="double-flat.jpg" alt="A double-flat soldering iron tip with a bluntedpoint"></p>
+<p>If you opt to use a smaller tip, you may have to turn up
+your irons temperature to hasten heat transfer.</p>
+<h2 id="tinning">Tinning</h2>
+<p>Tinning is the process of melting solder against the tip of
+an iron. It helps protect the iron from oxidation, which
+reduces thermal conductivity of the iron and prevents solder
+from sticking to the tip. Always make sure to tin your tip
+before first use and before turning off your iron.</p>
+<h2 id="temperature">Temperature</h2>
+<p>When I first started soldering, I made the mistake of
+thinking that the hotter my iron was, the easier soldering
+would be.</p>
+<p>While it&rsquo;s true solder will melt faster, a hotter iron also
+leads to faster oxidation of tips, overheated joints, and
+possible damage of nearby components (usually plastics) from
+radiant heat. <strong>Melting plastics (and other materials) can
+release toxic fumes.</strong> Try to keep the iron temperatures under
+450 degrees Celsius to prevent this<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p>I typically set my iron to 250&ndash;300 degrees Celsius. It&rsquo;s
+more than hot enough to melt leaded solder, and just hot enough
+to melt unleaded solder&mdash;but not so hot that it starts to
+melt nearby plastics.</p>
+<p>After you turn on your iron, let it sit for a few minutes
+(under a watchful eye, of course) to fully heat up.</p>
+<h2 id="know-when-to-foldem">Know When to Fold&rsquo;em</h2>
+<p>A soldering iron won&rsquo;t always work for your project. For
+example, you might be able to get away with soldering a chip
+onto a motherboard with a soldering iron, but to desolder
+chips cleanly without bending any pins, you&rsquo;ll need to use a
+heat gun. I&rsquo;ve had the (mis?)fortune of learning this from
+experience&hellip;</p>
+<p>Sometimes, you might have to swallow your ego and admit you
+aren&rsquo;t skilled enough for an exceptionally difficult job.
+There&rsquo;s less shame in conceding you don&rsquo;t know how to do
+something right at the moment than doing it wrong and
+breaking something.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/1494769/">https://pubmed.ncbi.nlm.nih.gov/1494769/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.cdc.gov/niosh/topics/lead/safe.html">https://www.cdc.gov/niosh/topics/lead/safe.html</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://www.cmu.edu/ehs/Laboratory-Safety/chemical-safety/documents/ehs-guideline---soldering-safety.pdf">https://www.cmu.edu/ehs/Laboratory-Safety/chemical-safety/documents/ehs-guideline---soldering-safety.pdf</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://safety.eng.cam.ac.uk/safe-working/copy_of_soldering-safety">https://safety.eng.cam.ac.uk/safe-working/copy_of_soldering-safety</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://eta-safety.lbl.gov/sites/default/files/Soldering%20Guidelines.pdf">https://eta-safety.lbl.gov/sites/default/files/Soldering%20Guidelines.pdf</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Wire coil cleaners work by turning solder into dust, and <a href="https://docs.rs-online.com/32a6/0900766b8105ec6d.pdf">breathing lead dust is dangerous</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>

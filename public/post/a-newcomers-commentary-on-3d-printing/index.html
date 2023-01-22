@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>A Newcomer&#39;s Commentary on 3D Printing | Hugo ʕ•ᴥ•ʔ Bear Blog</title>
+<meta name="title" content="A Newcomer&#39;s Commentary on 3D Printing" />
+<meta name="description" content="After recently purchasing my first 3D printer, I have developed some thoughts on the technology in general.
+I&rsquo;ve had friends in the 3D printing scene preach the virtues of the technology for years now. Still, I was unconvinced. It seemed like quite an expensive investment for the infrequent payoff of being able to print something useful. After all, I could always fall back on my friends who did own 3D printers if I needed something printed." />
+<meta name="keywords" content="" />
+
+
+<meta property="og:title" content="A Newcomer&#39;s Commentary on 3D Printing" />
+<meta property="og:description" content="After recently purchasing my first 3D printer, I have developed some thoughts on the technology in general.
+I&rsquo;ve had friends in the 3D printing scene preach the virtues of the technology for years now. Still, I was unconvinced. It seemed like quite an expensive investment for the infrequent payoff of being able to print something useful. After all, I could always fall back on my friends who did own 3D printers if I needed something printed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/a-newcomers-commentary-on-3d-printing/" /><meta property="og:image" content="https://example.com/images/share.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-12-02T00:00:00-05:00" />
+<meta property="article:modified_time" content="2022-12-02T00:00:00-05:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/share.png"/>
+
+<meta name="twitter:title" content="A Newcomer&#39;s Commentary on 3D Printing"/>
+<meta name="twitter:description" content="After recently purchasing my first 3D printer, I have developed some thoughts on the technology in general.
+I&rsquo;ve had friends in the 3D printing scene preach the virtues of the technology for years now. Still, I was unconvinced. It seemed like quite an expensive investment for the infrequent payoff of being able to print something useful. After all, I could always fall back on my friends who did own 3D printers if I needed something printed."/>
+
+
+
+<meta itemprop="name" content="A Newcomer&#39;s Commentary on 3D Printing">
+<meta itemprop="description" content="After recently purchasing my first 3D printer, I have developed some thoughts on the technology in general.
+I&rsquo;ve had friends in the 3D printing scene preach the virtues of the technology for years now. Still, I was unconvinced. It seemed like quite an expensive investment for the infrequent payoff of being able to print something useful. After all, I could always fall back on my friends who did own 3D printers if I needed something printed."><meta itemprop="datePublished" content="2022-12-02T00:00:00-05:00" />
+<meta itemprop="dateModified" content="2022-12-02T00:00:00-05:00" />
+<meta itemprop="wordCount" content="602"><meta itemprop="image" content="https://example.com/images/share.png"/>
+<meta itemprop="keywords" content="" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Hugo ʕ•ᴥ•ʔ Bear Blog</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About Me</a>
+
+
+</nav>
+</header>
+  <main>
+
+<content>
+  <p>After recently purchasing my first 3D printer, I have
+developed some thoughts on the technology in general.</p>
+<p>I&rsquo;ve had friends in the 3D printing scene preach the virtues
+of the technology for years now. Still, I was unconvinced.
+It seemed like quite an expensive investment for the
+infrequent payoff of being able to print something useful.
+After all, I could always fall back on my friends who did
+own 3D printers if I needed something printed.</p>
+<p>And that&rsquo;s exactly what I did when I needed some holders for
+my precision screwdriver bits. Unfortunately for me, my
+friend doesn&rsquo;t work for free&mdash;I begrudgingly agreed to
+trade the print for an old hard drive. As we met, he
+suggested that I should get my own printer, as he couldn&rsquo;t
+always be there to print something for me.</p>
+<p>That night I briefly considered what he said and looked
+around for some printers. When I found a refurbished Ender 3
+v2 for $160, I knew I couldn&rsquo;t pass up the offer. Four days
+and some assembly time later, I was the proud owner of a 3D
+printer!</p>
+<p>Honestly, my first impressions were not good. The manual
+included with my printer was vague and uncomprehensive. It
+gave very little instruction on how to level the bed, which
+I spent nearly half an hour doing before finding a helpful
+online tutorial. The broken English did not help
+either&mdash;one such phrase, &ldquo;Do not any other operation,&rdquo;
+displays every time I move the print head.</p>
+<p>On the other hand, I found the software and the actual
+printing experience to be very smooth and user friendly. I
+use PrusaSlicer (as recommended by my friend), which has
+great defaults for the Ender 3 v2. My first print was to be
+the <a href="https://www.thingiverse.com/thing:763622">3DBenchy</a>.
+After one failed attempt, the first layer stuck and it was
+off to the races! I sat and watched nearly the whole
+process. It came out good&mdash;not perfect, but a fantastic
+result for a first print nonetheless.</p>
+<p>Since then, I&rsquo;ve been making prints like a mad man. I didn&rsquo;t
+realize how useful a 3D printer is until I actually owned
+one. Just last night, I noticed I needed a hook to hang my
+coat&mdash;I had it printed within the hour. I&rsquo;ve even been
+printing parts for my 3D printer with my 3D printer, which
+blows my mind! From an outsider&rsquo;s perspective that may seem
+silly, but it&rsquo;s just too meta for me.</p>
+<p>As I&rsquo;ve used my printer more I&rsquo;ve started to think about the
+present and future implications of the technology. The most
+prominent issue around personal 3D printing today is the
+creation of primarially 3D printed firearms. Opponents of
+gun control like this because it allows for unregulated
+creation of firearms; proponents of gun control dislike this
+because it allows for the unregulated creation of firearms.
+I&rsquo;ll not get into my opinion here :^). At any rate, if
+personal 3D printing is to grow in popularity, the on-demand
+nature of the technology would help eliminate the
+environmental impact of shipping and overproduction.</p>
+<p>Personally, I believe 3D printing and at-home manufacturing
+will be one of the &ldquo;Next Big Things&rdquo; and I am pleased that I
+now own my own share of the technology. I&rsquo;d like to imagine
+that in fifty years, multi-extruder printers will be as
+commonplace as microwaves, and we&rsquo;ll all be able to &ldquo;cook
+up&rdquo; prints as we need them in minutes. That may be a foolish
+prospect, but it is just as likely an underprediction of the
+future. I certainly can&rsquo;t say for sure&mdash;no one can. Only
+time will tell how how far the technology will go.</p>
+
+</content>
+<p>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+    
+</body>
+
+</html>
