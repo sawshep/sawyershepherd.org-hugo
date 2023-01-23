@@ -5,6 +5,7 @@ author = "Sawyer Shepherd"
 copyright = "Copyright © 2023, Sawyer Shepherd."
 languageCode = "en-US"
 
+enableEmoji = true
 
 enableRobotsTXT = true
 
