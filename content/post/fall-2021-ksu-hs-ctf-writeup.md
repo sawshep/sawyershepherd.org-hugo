@@ -176,7 +176,7 @@ flag was written across the image.
 
 ![An image of 2 cute rats in a cage at a pet store. The
 caption says,
-"`flag{help_im_stuck_at_the_pet_store}`"](/images/a-friend.png "A
+"`flag{help_im_stuck_at_the_pet_store}`"](/images/a-friend.jpg "A
 Friend Flag")
 
 [^format]: https://rtcamp.com/tutorials/nginx/log-parsing/
