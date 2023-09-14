@@ -28,8 +28,8 @@ Our goal is to find the following:
 
 I used a Kali virtual machine for this challenge because I
 didn't want to sully my machine with Python 2! We must first
-update our repositories before install Python 2, Pip 2, and
-the dependencies for Volatility:
+update our repositories before installing Python 2, Pip 2,
+and the dependencies for Volatility:
 
 ```bash
 $ sudo apt update
