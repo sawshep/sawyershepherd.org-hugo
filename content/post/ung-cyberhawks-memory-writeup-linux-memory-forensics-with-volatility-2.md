@@ -10,9 +10,9 @@ for the UNG CyberHawks' "Memory" challenge. If you're
 looking for a Volatility 3 tutorial, I'd suggest following
 [this
 writeup](https://www.pkusinski.com/sekai-ctf-2022-writeup-symbolicneeds/)
-by Pawel Kusinski. This tutorial will not cover the creation
-of Linux OS profiles--for this, you can follow [the official
-documentation](https://github.com/volatilityfoundation/volatility/wiki/Linux#creating-a-new-profile)
+by Pawel Kusinski. My writeup will not cover the creation of
+Linux OS profiles---for this, you can follow [the official
+documentation](https://github.com/volatilityfoundation/volatility/wiki/Linux#creating-a-new-profile).
 
 If you'd like to follow along with this guide, you can
 download [the memory dump
@@ -29,7 +29,7 @@ Our goal is to find the following:
 I used a Kali virtual machine for this challenge because I
 didn't want to sully my machine with Python 2! We must first
 update our repositories before install Python 2, Pip 2, and
-Volatility's dependencies:
+the dependencies for Volatility:
 
 ```bash
 $ sudo apt update
@@ -81,7 +81,7 @@ $ python2 vol.py --plugins=plugins/ --profile=LinuxUbuntu_Profilex64 -f dump.mem
 ## Basic Forensics
 
 We shouldn't get ahead of ourselves by jumping straight in
-to using Volatility--performing basic forensics with
+to using Volatility---performing basic forensics with
 programs like Strings and Binwalk can help understand the
 problem on a deeper level. Unlike Volatility, both programs
 are included in Kali by default.
@@ -106,12 +106,14 @@ file.read(buffer.data(), BUFFER_SIZE); {ent.size() << end
 I've split this across multiple lines to make it a little
 easier to read. It looks like a `vi` buffer of a C++ program
 intended to load the flag image file into memory. Note that
-the vector initial buffer size is only 1,000 bytes, much smaller
-than any image would be. In C++, vectors are generally
-allocated in the heap, meaning loading the image into the
-buffer has caused the heap to overflow. We would have never
-found this important detail had we not performed basic
-forensics first!
+the vector initial buffer size is only 1,000 bytes, much
+smaller than any image would be. In C++, vectors are
+dynamically allocated, meaning that loading the image into
+the vector will not cause an overflow, but rather reallocate
+and copy the buffer in whatever way is implemented by the
+standard library. Knowing this will help recover the image
+later. We would have never found this important detail had
+we not performed basic forensics first!
 
 ### Binwalk
 
@@ -128,23 +130,23 @@ $ binwalk dump.mem | grep -i png
 ...
 ```
 
-Binwalk returns 84 PNGs. I attempted to extract them, but I
-quickly ran out of storage space on my VM as Binwalk's
-extractions are often a significant portion of the binary
-size. This is because the program usually extracts files
-from the header to the end of the binary, leaving on a lot
-of junk data. For this challenge, manually combing through
-all the files Binwalk extracted would have taken too much
-time--it can be solved in a much more intelligent and
-efficient way.
+Binwalk returns that it found 84 PNGs. I attempted to
+extract them, but I quickly ran out of storage space on my
+VM as Binwalk's extractions are often a significant portion
+of the binary size. This is because the program usually
+extracts files from the header to the end of the binary,
+leaving on a lot of junk data. For this challenge, manually
+combing through all the files Binwalk extracted would have
+taken too much time---it can be solved in a much more
+intelligent and efficient way.
 
 ## Finding the Filename
 
 With basic forensics out of the way, we can get on to using
-Volatility. Let's take the most straight-forward path first
-in finding the filename. We will use the `linux_lsof`
-Volatility plugin (you can find a full list of plugins with
-the `--info` flag) to list all open files:
+Volatility. Let's take the most straightforward approach to
+find the filename. We will use the `linux_lsof` Volatility
+plugin (you can find a full list of plugins with the
+`--info` flag) to list all open files:
 
 ```bash
 $ python2 vol.py --plugins=plugins/ --profile=LinuxUbuntu_Profilex64 -f dump.mem linux_lsof
@@ -184,7 +186,7 @@ $ python2 vol.py --plugins=plugins/ --profile=LinuxUbuntu_Profilex64 -f dump.mem
 But there's an issue! If we `xxd` the file, we'll find that
 it's all zeroes. This tripped me up; for a while I assumed
 that the flag had not actually been zeroed, but instead that
-I was using the command incorrectly. So--why is the flag
+I was using the command incorrectly. So, why is the flag
 file zeroed?
 
 ### Reading Command Line History
@@ -209,11 +211,12 @@ Pid  Name Command Time                 Command
 ```
 
 The Bash history reveals the answer: the flag was removed
-after it was loaded into memory. 
+after it was loaded into memory, which means we can't
+retrieve it the usual way.
 
 ## Finding Process Memory Mappings
 
-So--because we were unable to recover the flag from the
+So---because we were unable to recover the flag from the
 inode, our last remaining avenue is to extract the PNG file
 directly from a heap dump of `readFile`. In order to dump
 the heap of `readFile`, we must identify the process ID and
@@ -228,8 +231,8 @@ Offset             Name     Pid  PPid Uid  Gid  DTB                Start Time
 0xffff9d3e002d4a40 readFile 2812 2742 1000 1000 0x0000000007010000 2023-04-09 20:19:25 UTC+0000
 ```
 
-Knowing the PID of `readFile` is 2812, we can now find the
-process's memory mappings with the `linux_proc_maps` plugin:
+With `readFile`'s PID of 2812, we can now find its memory
+mappings with the `linux_proc_maps` plugin:
 
 ```bash
 $ python2 vol.py --plugins=plugins/ --profile=LinuxUbuntu_Profilex64 -f dump.mem linux_proc_maps --pid 2812
