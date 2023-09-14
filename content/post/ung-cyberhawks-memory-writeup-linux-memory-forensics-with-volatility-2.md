@@ -22,7 +22,7 @@ here](https://1drv.ms/u/s!AsnToTHSN8cqmcxN25B1a7GbzLjJxw).
 Our goal is to find the following:
 1. The filename of the flag file
 2. The full path of the flag file
-3. The flag itsself
+3. The flag itself
 
 ## Setting Up the Environment
 
@@ -81,10 +81,10 @@ $ python2 vol.py --plugins=plugins/ --profile=LinuxUbuntu_Profilex64 -f dump.mem
 ## Basic Forensics
 
 We shouldn't get ahead of ourselves by jumping straight in
-to using Volatility--performing basic forenics with programs
-like Strings and Binwalk can help understand the problem on
-a deeper level. Unlike Volatility, both programs are
-included in Kali by default.
+to using Volatility--performing basic forensics with
+programs like Strings and Binwalk can help understand the
+problem on a deeper level. Unlike Volatility, both programs
+are included in Kali by default.
 
 ### Strings
 
@@ -296,7 +296,7 @@ Let's extract each of these to their own files so we can
 analyze each independently. We can use `dd` to copy a byte
 slice from the heap dump, changing the `skip` and `count`
 options relative to each header. Note that `xxd` uses
-hexidecimal, while `dd` uses decimal. This example copies
+hexadecimal, while `dd` uses decimal. This example copies
 from the first PNG header to just before the second PNG
 header:
 
