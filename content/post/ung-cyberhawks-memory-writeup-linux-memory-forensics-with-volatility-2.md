@@ -1,7 +1,7 @@
 ---
 title: "UNG Cyberhawks \"Memory\" Writeup: Linux Memory Forensics with Volatility 2"
 date: 2023-09-13T01:00:47-04:00
-draft: false
+draft: true
 ---
 
 This post serves as a guide to installing and using
