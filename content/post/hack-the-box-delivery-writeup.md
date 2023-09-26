@@ -50,14 +50,13 @@ enabled on the server.
 
 Let's connect to the webserver in a browser:
 
-![](/images/hack-the-box-delivery-writeup/home.png)
+![](/images/hack-the-box-delivery-writeup/home.jpg)
 
 It's a pretty standard framework homepage. Let's check out
 the links at the bottom of the page. One leads to
 `delivery.htb/#contact`, and the other
-`helpdesk.delivery.htb`. The contact page is similar 
-
-We're given some interesting information:
+`helpdesk.delivery.htb`. The contact page is similar, though
+we're given some additional interesting information:
 
 > For unregistered users, please use our HelpDesk to get in
 > touch with our team. Once you have an @delivery.htb email
@@ -65,17 +64,17 @@ We're given some interesting information:
 > server.
 
 This confirms that Mattermost is running on port 8065. Let's
-check out the helpdesk. 
+check out the helpdesk: 
 
-![](/images/hack-the-box-delivery-writeup/submit-ticket.png)
+![](/images/hack-the-box-delivery-writeup/submit-ticket.jpg)
 
 After submitting a ticket, we are presented with a receipt,
 where we are given a ticket number (1769678) and an email
 to which we can send further information
 (1769678@delivery.htb). We can also check our ticket status
-on the "Check Ticket Status". 
+on the "Check Ticket Status" page:
 
-![](/images/hack-the-box-delivery-writeup/ticket-status.png)
+![](/images/hack-the-box-delivery-writeup/ticket-status.jpg)
 
 ## Enumerating Mattermost
 
@@ -87,18 +86,18 @@ worked. Next, I tried creating an account with the email
 instead. Sure enough, it was accepted, but then the
 registration flow prompted me to confirm the email:
 
-![](/images/hack-the-box-delivery-writeup/ticket-status.png)
+![](/images/hack-the-box-delivery-writeup/registration.jpg)
 
 Remember that we used the ticked-provided email to register.
 Let's check the ticket status page and see if we can access
 the confirmation email there:
 
-![](/images/hack-the-box-delivery-writeup/email.png)
+![](/images/hack-the-box-delivery-writeup/email.jpg)
 
 After following the activation link, we can now log in to
 the server...
 
-![](/images/hack-the-box-delivery-writeup/verified.png)
+![](/images/hack-the-box-delivery-writeup/verified.jpg)
 
 ## Pwning User
 
@@ -126,7 +125,7 @@ ignored these clues and exploited a different vulnerability.
 We can log in to the server with the provided username and
 password:
 
-```bash
+```
 $ ssh maildeliverer@delivery.htb
 maildeliverer@delivery.htb's password: Youve_G0t_Mail!
 Linux Delivery 4.19.0-13-amd64 #1 SMP Debian 4.19.160-2 (2020-11-28) x86_64
