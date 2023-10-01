@@ -1,5 +1,5 @@
 ---
-title: "Hack The Box "Shocker" Writeup"
+title: "Hack The Box \"Shocker\" Writeup"
 date: 2023-10-01T00:12:29-04:00
 draft: false
 ---
