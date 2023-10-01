@@ -43,7 +43,7 @@ Let's attempt to connect to the server:
 $ ssh 10.10.10.56 -p 2222
 ```
 
-We are asked for a password--password authentication is
+We are asked for a password---password authentication is
 enabled. Next, let's see if there are any salient
 vulnerabilities for this version of OpenSSH, 7.2p2.
 
@@ -63,7 +63,7 @@ submitting very long passwords. I downloaded the script, set
 up a virtual environment, installed the dependencies, and
 monkey-patched `time.clock = time.time` because the former
 was deprecated. I ran it multiple times with a small list of
-17 usernames--the following is one output:
+17 usernames---the following is one output:
 
 ```
 ./40136.py -U usernames.txt 10.10.10.56:2222 --samples 64 --trials 32
@@ -163,7 +163,7 @@ server could possibly be vulnerable to
 an attack that exploits a vulnerability in how Bash
 processes environment variables to remotely execute
 arbitrary code. That's why I didn't see it when initially
-researching vulnerabilities for the web server--it's
+researching vulnerabilities for the web server---it's
 technically a vulnerability in Bash.
 
 ## Exploitation
