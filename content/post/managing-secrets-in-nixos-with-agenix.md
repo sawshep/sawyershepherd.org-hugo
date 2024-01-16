@@ -140,7 +140,7 @@ or one of our user keys:
 Additionally, if we declare more recipients for our secret
 in `secrets.nix`, we can rekey the secret with:
 
-```
+```bash
 /etc/nixos/secrets $ agenix -r my-secret.age -i /etc/ssh/ssh_host_ed25519_key
 ```
 
