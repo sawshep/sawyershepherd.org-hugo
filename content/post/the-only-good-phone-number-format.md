@@ -27,17 +27,18 @@ recognizable as a phone number, and easy to read. It seems
 simple, but let's take a look at a number of formats I've
 seen in the wild.
 
-## Rogue Formats
+## Standards
 
-### Dot Dot Dot
+### The Rogue Dot Dot Dot
 
 1.555.123.4567
+
+This one isn't really a standard format, but I do see it
+used often.
 
 This one looks too much like an IP address. You can tell it
 isn't with a quick glance, but you shouldn't *need* a quick
 glace! 
-
-## Standards
 
 ### E.164
 
