@@ -68,7 +68,7 @@ phone.
 
 ### RFC 3966
 
-[[tel:+1-555-123-4567]]
+tel:+1-555-123-4567
 
 Well, at least this one tells you it's a telephone number,
 and you can click it if you have an application that
@@ -76,7 +76,7 @@ supports opening numbers! All the hyphens are ugly, though.
 It's useful to link to, but there should be some text in
 place of the number, the same way you might write
 [sawyershepherd.org](https://sawyershepherd.org) but
-actually link to [[https://www.sawyershepherd.org]].
+actually link to [https://www.sawyershepherd.org](https://www.sawyershepherd.org).
 
 ## The Champion
 
@@ -111,4 +111,4 @@ In The Champion format, it would be +33 (1) 2345-6789. I
 happen to think that's much more readable. Now, the French
 people probably disagree with me, but you know what?
 
-![/images/you-are-all-wrong.jpg](You are all wrong)
+![A man standing in front of a crowd. He is saying "Yes, you are all wrong"](/images/you-are-all-wrong.jpg "Yes, you are all wrong")
