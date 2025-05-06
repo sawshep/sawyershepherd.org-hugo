@@ -36,11 +36,11 @@ at the pin-out diagram[^1] of the programmer:
 
 ![Pin-out diagram of the CH341A/B programmer. In order, the pins are CS, MISO, 3V3, GND, MOSI, CLK, 3V3, and 3V3](/images/ch341ab-fix/ch341ab-pin-out.jpg)
 
-You'll want to measure the voltage across pin 2, MISO
-(master in, slave out[^2]), and pin 5, MOSI (master out,
+You'll want to measure the voltage across **pin 2, MISO**
+(master in, slave out[^2]), and **pin 5, MOSI** (master out,
 slave in). Here's how that looks like on the real device:
 
-![Two images side-by-side of using a multimeter to measure pin 2 and pin 5 respectively](/images/ch341ab-fix/miso-mosi.jpg)
+![Two images side-by-side of using a multimeter to measure pin 2 and pin 5 respectively](/images/ch341ab-fix/ch341ab-miso-mosi.jpg)
 
 Plug the programmer into a powered USB port (a laptop will
 work fine), touch ground with the black multimeter probe (the USB plug
@@ -65,7 +65,7 @@ change in naming convention, I don't want to go through that
 effort for it not to work at all.
 
 Which brings us to a clever fix that requires no soldering,
-just a sharp implement and a two-pin jumper. I did not come up
+just a **sharp implement** and a **two-pin jumper**. I did not come up
 with this--I found it in the depths of an electrical
 engineering forum[^3]--but I thought it was so fantastic I had
 to share it.
@@ -94,6 +94,9 @@ the **Identifying the Issue** section. This time, your
 multimeter should read around 3.3 volts for both pins.
 
 ![The multimeter reads 3.3 volts on pins 2 and 5](/images/ch341ab-fix/ch341ab-3v3.jpg)
+
+Congratulations, your CH341A/B programmer's data lines are
+now operating at the proper 3.3 volts!
 
 [^1]: Thanks to Jake Little for his work reverse-engineering
     the programmer schematic:
