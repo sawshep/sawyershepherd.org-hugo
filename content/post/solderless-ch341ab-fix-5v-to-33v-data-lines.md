@@ -1,6 +1,7 @@
 ---
 title: "Solderless CH341A/B Fix: 5V to 3.3V Data Lines"
 date: 2025-05-05T00:00:00-05:00
+description: Learn how to safely convert your CH341A/B USB flash programmer's 5V data lines to 3.3V without soldering using a simple jumper and PCB trace modification.
 ---
 
 Heads up: This post is targeting the most popular
