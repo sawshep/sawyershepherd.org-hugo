@@ -13,6 +13,10 @@ A few of my friends have blogs you should check out as well.
 
 * [Biotech Blog](https://biotechblog.org/):  Really cool
   biotechnology stuff!
+* [Crypticsignals](https://crypticsignals.github.io/):
+  Fellow CyberHawks blue-teamer posting about cybersecurity.
+* [JackTheSparrow](https://jackthesparow.github.io/):  CTF
+  writeups, and a fellow CyberHawk as well.
 
 ![Medieval headshot painting of a sheep in clothes. Not
 me.](/images/sheep-in-clothes.jpg)
