@@ -17,6 +17,8 @@ A few of my friends have blogs you should check out as well.
   Fellow CyberHawks blue-teamer posting about cybersecurity.
 * [JackTheSparrow](https://jackthesparow.github.io/):  CTF
   writeups, and a fellow CyberHawk as well.
+* [Daniel Pham](https://danielphms.github.io/blogs.html):
+  Personal blog featuring tennis and homelab content.
 
 ![Medieval headshot painting of a sheep in clothes. Not
 me.](/images/sheep-in-clothes.jpg)
